@@ -523,7 +523,6 @@ func (p *Planner) EnterField(ref int) {
 	}
 
 	fieldConfiguration := p.visitor.Config.Fields.ForTypeField(enclosingTypeName, fieldName)
-	// if subgraph does not have type then ignore `__typename` field
 	if fieldConfiguration == nil && fieldName != "__typename" {
 		p.addField(ref)
 		return
