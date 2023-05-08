@@ -401,7 +401,7 @@ func (p *Planner) EnterSelectionSet(ref int) {
 		// Always include __typename in abstract type selection sets. This is
 		// done because child fields may be federated and __typename will be
 		// needed for representations. While it would be possible to determine
-		// exactly when __typename is needed, there's no harm in just always
+		// exactly when __typename is needed, thereいf's no harm in just always
 		// including it.
 		p.addTypenameToSelectionSet(set.Ref)
 		return

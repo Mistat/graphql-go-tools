@@ -192,7 +192,13 @@ func (i *inputCoercionForListVisitor) walkJsonObject(inputObjDefTypeRef int, dat
 		i.updateQuery(string(key))
 		defer i.popQuery()
 
+		if inputObjDefTypeRef == ast.InvalidRef {
+			return nil
+		}
 		inputValueDefRef := i.definition.InputObjectTypeDefinitionInputValueDefinitionByName(inputObjDefTypeRef, key)
+		if inputValueDefRef == ast.InvalidRef {
+			return nil
+		}
 		typeRef := i.definition.ResolveListOrNameType(i.definition.InputValueDefinitionType(inputValueDefRef))
 
 		switch i.definition.Types[typeRef].TypeKind {
